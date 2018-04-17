@@ -68,7 +68,7 @@ RUN pip3 --no-cache-dir install \
 
 
 # Enables X11 sharing and creates user home directory
-ENV USER_NAME cig2017
+ENV USER_NAME crowdai
 ENV HOME_DIR /home/$USER_NAME
 
 # Replace HOST_UID/HOST_GUID with your user / group id (needed for X11)
@@ -99,4 +99,4 @@ COPY _vizdoom.cfg .
 # Uncomment to use doom2.wad:
 #COPY doom2.wad /usr/local/lib/python3.5/dist-packages/vizdoom
 
-CMD ./sample_random_agent.py
+# CMD ./sample_random_agent.py

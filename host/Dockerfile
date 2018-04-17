@@ -49,7 +49,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # Enables X11 sharing and creates user home directory
-ENV USER_NAME cig2017
+ENV USER_NAME crowdai
 ENV HOME_DIR /home/$USER_NAME
 #
 # Replace HOST_UID/HOST_GUID with your user / group id (needed for X11)
@@ -79,4 +79,4 @@ RUN sudo chown ${HOST_UID}:${HOST_GID} -R *
 #COPY doom2.wad /usr/local/lib/python3.5/dist-packages/vizdoom
 
 
-ENTRYPOINT ["./host.py"]
+# ENTRYPOINT ["./host.py"]
