@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vizdoom2018-grading-multiplayer-pod-round-test-119
+spec:
+  containers:
+  - name: host
+    image: spmohanty/cig2017_host:latest
+    command: ["/home/crowdai/host.py"]
+    args: ["-r", "game_record.doomrecord", "-p", "5"]
+  - name: submission-01
+    image: spmohanty/cig2017_random:latest
+    command: ["/home/crowdai/sample_random_agent.py"]
+    args: []
+  - name: submission-02
+    image: spmohanty/cig2017_random:latest
+    command: ["/home/crowdai/sample_random_agent.py"]
+    args: []
+  - name: submission-03
+    image: spmohanty/cig2017_random:latest
+    command: ["/home/crowdai/sample_random_agent.py"]
+    args: []
+  - name: submission-04
+    image: spmohanty/cig2017_random:latest
+    command: ["/home/crowdai/sample_random_agent.py"]
+    args: []
+  - name: submission-05
+    image: spmohanty/cig2017_random:latest
+    command: ["/home/crowdai/sample_random_agent.py"]
+    args: []
+
+  restartPolicy: Never
