@@ -29,6 +29,7 @@ while not game.is_episode_finished():
 
     # Analyze the state ... or not
     s = game.get_state()
+    print(s)
 
     # Make your action.
     game.make_action(choice(actions))

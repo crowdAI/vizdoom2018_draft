@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: vizdoom2018-grading-pod-round-1
+  name: vizdoom2018-grading-pod-round-test-119
 spec:
   containers:
+  - name: host
+    image: spmohanty/cig2017_host:latest
+    command: ["/home/crowdai/host.py"]
+    args: ["-r", "game_record.doomrecord"]
   - name: submission-01
-    image: spmohanty/cig2017_random
+    image: spmohanty/cig2017_random:latest
     command: ["/home/crowdai/sample_random_agent.py"]
     args: []
-  - name: host
-    image: spmohanty/cig2017_host
-    command: ["/home/crowdai/host.py"]
-    args: ["-r game_record.doomrecord"]
   restartPolicy: Never
