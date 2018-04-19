@@ -39,4 +39,3 @@ fi
 
 docker build -t ${image_tag} .
 rm -f cig2017.wad _vizdoom.cfg doom2.wad
-

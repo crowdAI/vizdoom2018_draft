@@ -1,15 +1,27 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: vizdoom2018-grading-pod-round-test-119
+  name: vizdoom2018-grading-pod-debug
 spec:
+  volumes:
+  - name: shared-data
+    emptyDir: {}
   containers:
   - name: host
-    image: spmohanty/cig2017_host:latest
-    command: ["/home/crowdai/host.py"]
-    args: ["-r", "game_record.doomrecord"]
+    image: localhost:5000/cig2017_host:latest
+    volumeMounts:
+    - name: shared-data
+      mountPath: /crowdai
+    command: ["/home/crowdai/run.sh"]
+    # command: ["sleep"]
+    # args: ["3600"]
+
   - name: submission-01
-    image: spmohanty/cig2017_random:latest
-    command: ["/home/crowdai/sample_random_agent.py"]
-    args: []
+    image: localhost:5000/cig2017_random:latest
+    command: ["/home/crowdai/run.sh"]
+    # command: ["sleep"]
+    # args: ["3600"]
+    volumeMounts:
+    - name: shared-data
+      mountPath: /crowdai
   restartPolicy: Never

@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     cmake \
     curl \
     git \
+    g++ \
     libboost-all-dev \
     libbz2-dev \
     libfluidsynth-dev \
@@ -72,11 +73,12 @@ WORKDIR ${HOME_DIR}
 COPY host.py .
 COPY cig2017.wad .
 COPY _vizdoom.ini .
+COPY run.sh .
+ADD ViZDoom /home/crowdai/ViZDoom
 RUN sudo chown ${HOST_UID}:${HOST_GID} -R *
 
 
 # Uncomment to use doom2.wad:
 #COPY doom2.wad /usr/local/lib/python3.5/dist-packages/vizdoom
-
 
 # ENTRYPOINT ["./host.py"]

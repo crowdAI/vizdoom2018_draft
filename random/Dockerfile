@@ -90,7 +90,7 @@ WORKDIR ${HOME_DIR}
 # Copy agent files inside Docker image:
 COPY config config
 COPY sample_random_agent.py .
-
+COPY run.sh .
 
 ### Do not change this ###
 COPY cig2017.wad .

@@ -29,7 +29,7 @@ while not game.is_episode_finished():
 
     # Analyze the state ... or not
     s = game.get_state()
-    print(s)
+    # print(s)
 
     # Make your action.
     game.make_action(choice(actions))
@@ -38,4 +38,5 @@ while not game.is_episode_finished():
     if s.number % 175 == 0:
         print("Frags:", game.get_game_variable(vzd.GameVariable.FRAGCOUNT))
 
+print("Episode FINISHED !")
 game.close()

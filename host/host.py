@@ -38,7 +38,7 @@ if __name__ == "__main__":
                         default=False,
                         help='disables console output')
     parser.add_argument('-w', '--watch', dest='watch', action='store_const',
-                        default=False, const=True,
+                        default=True, const=True,
                         help='roam the map as a ghost spectator')
 
     args = parser.parse_args()
@@ -101,11 +101,10 @@ if __name__ == "__main__":
 
     if watch:
         game.set_mode(vzd.Mode.ASYNC_SPECTATOR)
-        game.set_window_visible(True)
     else:
         game.set_mode(vzd.Mode.ASYNC_PLAYER)
-        game.set_window_visible(False)
 
+    game.set_window_visible(False)
     game.set_screen_resolution(vzd.ScreenResolution.RES_1024X576)
 
     plural = "s"

@@ -37,6 +37,10 @@ if [ "`uname`" != "Linux" ]; then
   echo "WARNING: GUI forwarding in Docker was tested only on a linux host."
 fi
 
+# $DOCKER_CMD run --net=host -ti --rm --name ${container_name} \
+#     --env="DISPLAY" --privileged \
+#     ${image_tag} "${@:2}"
+
 $DOCKER_CMD run --net=host -ti --rm --name ${container_name} \
     --env="DISPLAY" --privileged \
     ${image_tag} "${@:2}"
