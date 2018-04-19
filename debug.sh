@@ -14,6 +14,10 @@ docker tag cig2017_host localhost:5000/cig2017_host
 docker push localhost:5000/cig2017_random
 docker push localhost:5000/cig2017_host
 
+
+kubectl delete pods vizdoom2018-grading-pod-debug --grace-period=0 --force
+kubectl create -f kube_specs/vizdoom2018_grading_pod.yaml
+
 # Then view logs of the host by :
 # kubectl logs vizdoom2018-grading-pod-debug -c host -f
 # and of submission-01 container by :
