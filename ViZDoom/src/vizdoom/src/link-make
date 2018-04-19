@@ -1,0 +1,1 @@
+if [ ! -e /home/mohanty/crowdai/vizdoom/ViZDoom/src/vizdoom/../../bin/vizdoom ]; then ln -sf /home/mohanty/crowdai/vizdoom/ViZDoom/src/vizdoom/src/vizdoom /home/mohanty/crowdai/vizdoom/ViZDoom/src/vizdoom/../../bin/vizdoom; fi
