@@ -37,5 +37,7 @@ if [ -f ${REPO_ROOT}/doom2.wad ]; then
   cp ${REPO_ROOT}/doom2.wad .
 fi
 
+cp -r ${REPO_ROOT}/ViZDoom .
+
 docker build -t ${image_tag} .
 rm -f cig2017.wad _vizdoom.cfg doom2.wad
