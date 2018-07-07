@@ -6,6 +6,7 @@ import vizdoom as vzd
 from tabulate import tabulate
 from warnings import warn
 
+MAX_MAP = 5
 MAX_PLAYERS = 8
 MAX_TIMELIMIT = 999
 DEFAULT_TIMELIMIT = 10
