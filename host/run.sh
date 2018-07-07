@@ -9,8 +9,8 @@
 # sudo python3 setup.py install
 # sleep 3600
 
-cd /home/crowdai/ViZDoom
-sudo pip3 install -U .
+# cd /home/crowdai/ViZDoom
+# sudo pip3 install -U .
 cd /home/crowdai/
 echo "Beginning execution of host.py"
 sudo /home/crowdai/host.py
