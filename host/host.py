@@ -6,11 +6,10 @@ import vizdoom as vzd
 from tabulate import tabulate
 from warnings import warn
 
-MAX_MAP = 5
-MAX_PLAYERS = 15
+MAX_PLAYERS = 8
 MAX_TIMELIMIT = 999
 DEFAULT_TIMELIMIT = 10
-WAD_FILE = "cig2017.wad"
+DEFAULT_WAD_FILE = "cig2017.wad"
 FRAMERATE = 35
 
 if __name__ == "__main__":
@@ -37,10 +36,12 @@ if __name__ == "__main__":
     parser.add_argument('-dc', '--console', dest='disable_console', action='store_true',
                         default=False,
                         help='disables console output')
-    parser.add_argument('-w', '--watch', dest='watch', action='store_const',
-                        default=True, const=True,
-                        help='roam the map as a ghost spectator')
-
+    # parser.add_argument('-w', '--watch', dest='watch', action='store_const',
+    #                     default=False, const=True,
+    #                     help='roam the map as a ghost spectator')
+    parser.add_argument('-w', '--wad', dest='wad',
+                        default=DEFAULT_WAD_FILE,
+                        help='Wad file with maps.')
     args = parser.parse_args()
 
     players_num = args.players_num
@@ -56,8 +57,6 @@ if __name__ == "__main__":
     else:
         log_interval_tics = None
 
-    if args.map < 1 or args.map > MAX_MAP:
-        raise ValueError("Map number should be between 1 and {}. Got: {}".format(MAX_MAP).format(args.map))
     if players_num < 0:
         raise ValueError("Number of players should be >= 0. Got: {}".format(players_num))
 
@@ -76,7 +75,7 @@ if __name__ == "__main__":
 
     game.set_doom_map(map)
 
-    game.set_doom_scenario_path(WAD_FILE)
+    game.set_doom_scenario_path(args.wad)
     game.add_game_args("-deathmatch +viz_nocheat 1 +viz_debug 0 +viz_respawn_delay 10")
     game.add_game_args("+sv_forcerespawn 1 +sv_noautoaim 1 +sv_respawnprotect 1 +sv_spawnfarthest 1 +sv_crouch 1")
 
@@ -100,9 +99,10 @@ if __name__ == "__main__":
     game.add_available_button(vzd.Button.MOVE_DOWN)
 
     if watch:
-        game.set_mode(vzd.Mode.ASYNC_SPECTATOR)
+        raise ValueError()
+        # game.set_mode(vzd.Mode.SPECTATOR)
     else:
-        game.set_mode(vzd.Mode.ASYNC_PLAYER)
+        game.set_mode(vzd.Mode.PLAYER)
 
     game.set_window_visible(False)
     game.set_screen_resolution(vzd.ScreenResolution.RES_1024X576)
@@ -120,7 +120,7 @@ if __name__ == "__main__":
     print("Starting vizdoom CIG 2017 host for {} player{}.".format(pn, plural))
     print("Configuration:")
     print(tabulate([
-        ("WAD", WAD_FILE),
+        ("WAD", args.wad),
         ("TIMELIMIT (min)", timelimit),
         ("MAP", map),
         ("PLAYERS", players_num - 1),
